@@ -6,8 +6,10 @@ permalink: /research/turbinecore/
 ---
 
 <p class="lead">
-TurbineCore reads a wind turbine's own SCADA record, works out how healthy
-it is, and decides how hard it should be allowed to run today.
+TurbineCore is an autonomous condition monitoring system. Every day, for
+every turbine, it reads the machine's own SCADA record, works out how
+healthy it is, and decides how hard it should be allowed to run, with no
+engineer needed in the loop for the analysis.
 </p>
 
 <div class="btn-row">
@@ -15,6 +17,41 @@ it is, and decides how hard it should be allowed to run today.
 {% if site.turbinecore_repo_url != "" %}<a class="btn btn-ghost" href="{{ site.turbinecore_repo_url }}" target="_blank" rel="noopener">Code on GitHub</a>{% endif %}
 </div>
 {% if site.turbinecore_demo_url != "" and site.turbinecore_demo_note != "" %}<p class="demo-note">{{ site.turbinecore_demo_note }}</p>{% endif %}
+
+## Autonomy
+
+Conventional condition monitoring stops at alarms: a value crosses a fixed
+limit and an engineer has to work out why, what happens next, and what to
+do. TurbineCore closes that loop itself. It runs the whole chain from data
+to decision on its own, each turbine-day, and only hands the result to
+people.
+
+<div class="loop" markdown="0">
+  <div class="loop-step"><span>1</span><h5>Observe</h5><p>Reads the day's SCADA record, whatever the farm calls its signals</p></div>
+  <div class="loop-step"><span>2</span><h5>Assess</h5><p>Compares the turbine with its own healthy behaviour</p></div>
+  <div class="loop-step"><span>3</span><h5>Diagnose</h5><p>Names the component that is drifting</p></div>
+  <div class="loop-step"><span>4</span><h5>Predict</h5><p>Estimates failure probability over the coming weeks</p></div>
+  <div class="loop-step"><span>5</span><h5>Decide</h5><p>Simulates candidate power limits and picks the day's setting</p></div>
+  <div class="loop-step"><span>6</span><h5>Explain</h5><p>Writes up the evidence and the decision for an engineer</p></div>
+</div>
+
+Three things make it autonomous rather than automated:
+
+- **It models its own consequences.** The world model predicts how the
+  turbine will respond to a command, so the system can test an action
+  before recommending it instead of following fixed rules.
+- **It knows when not to act.** Every decision is priced on energy, failure
+  risk, availability and cost under a pessimistic estimate; on most days the
+  answer is to do nothing.
+- **It transfers.** One shared vocabulary lets the same system run on wind
+  farms with different turbines, sensors and signal names.
+
+Autonomy has deliberate limits. Interpreting the data, updating each
+turbine's health state and computing the decision are automatic;
+confirming maintenance facts, defining operating constraints and
+authorising any real action on a turbine remain with people.
+
+## How it works
 
 A wind turbine already reports everything it does: power, wind speed,
 temperatures, pressures, vibration, pitch and yaw angles, alarms, and the
@@ -29,7 +66,7 @@ today and buys a lower chance of losing it for a week. The system prices
 both sides of that trade with its own model of the turbine before
 recommending anything.
 
-## How it works
+## The building blocks
 
 <div class="step-grid" markdown="0">
   <div class="step"><span class="step-n">1</span><h4>One vocabulary for five farms</h4><p>Every farm names its signals differently. Each channel is mapped onto a shared semantic description (component, physical quantity, unit, and whether it is a measurement or an operator command), so a model trained on four farms can read the fifth.</p></div>

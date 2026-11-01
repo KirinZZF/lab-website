@@ -55,18 +55,21 @@
 
 - id: world-models
   label: Theme 4
-  title: World Models & Decision Making
+  title: World Models & Autonomous Operation
   link: /research/turbinecore/
   icon: cube
   summary: >-
-    Learning how turbines respond to operator commands, and using that to
-    choose safer operating strategies.
+    Learning how turbines respond to operator commands, so that monitoring
+    can run and decide on its own.
   body: >-
     An action-conditioned world model, shared across wind farms with
     different sensors and naming, forecasts every channel with an
     uncertainty band under a given control set-point. Counterfactual queries
     ("what if this turbine were limited to 1.6 MW tomorrow?") feed
     pessimistic offline planning that trades energy against failure risk.
+    Together they let condition monitoring run autonomously, from raw data
+    to an operating decision, with people confirming facts and authorising
+    actions.
 
 - id: qml
   label: Cross-cutting

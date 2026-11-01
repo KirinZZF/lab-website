@@ -28,7 +28,7 @@ hero_button:
       <a class="feature" href="{{ '/research/turbinecore/' | relative_url }}">
         <div class="icon-circle icon-lg">{% include icon.html name="cube" %}</div>
         <h4>TurbineCore</h4>
-        <p>Our end-to-end platform for world-model-based wind turbine condition monitoring.</p>
+        <p>Our autonomous condition monitoring system: from SCADA data to the day's operating decision.</p>
       </a>
       <a class="feature" href="{{ '/contact/' | relative_url }}">
         <div class="icon-circle icon-lg">{% include icon.html name="mail" %}</div>
@@ -84,7 +84,7 @@ hero_button:
 <section class="section section-dark">
   <div class="container text-center">
     <h2 class="section-title">Key Results</h2>
-    <h5 class="section-subtitle">What condition-aware operation is worth, estimated on real wind farm records</h5>
+    <h5 class="section-subtitle">What autonomous, condition-aware operation is worth, estimated on real wind farm records</h5>
     <div class="stat-grid stat-impact">
       <div class="stat"><span class="stat-value">+1.5%</span><span class="stat-label">more energy generated: +215.7 MWh over two months at Penmanshiel (14 turbines)<br><small>TurbineCore policy vs. actual operation</small></span></div>
       <div class="stat"><span class="stat-value">−1.8%</span><span class="stat-label">lower O&amp;M cost at Penmanshiel; −0.7% at Hill of Towie<br><small>TurbineCore policy vs. actual operation</small></span></div>
@@ -111,9 +111,10 @@ hero_button:
         <h6 class="card-category">Featured project</h6>
         <h3 class="title">TurbineCore</h3>
         <p>
-          TurbineCore reads a wind turbine's own SCADA record, works out how
-          healthy it is, and decides how hard it should be allowed to run
-          today. A world model shared across five wind farms forecasts every
+          TurbineCore is an autonomous condition monitoring system. Every
+          day, for every turbine, it reads the machine's own SCADA record,
+          works out how healthy it is, and decides how hard it should be
+          allowed to run, without an engineer in the analysis loop. A world model shared across five wind farms forecasts every
           channel under a given operator command; on top of it the system
           detects anomalies, names the faulty component, estimates failure
           probability over the coming weeks, writes the day up, and learns a
