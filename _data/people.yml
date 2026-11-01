@@ -1,0 +1,51 @@
+# Lab members, grouped. Groups appear on the People page in this order.
+#
+# Each person:
+#   name:     shown as the card title
+#   role:     one line under the name
+#   photo:    file in assets/img/people/ (square or 4:5, ~600 px wide).
+#             Leave empty to show initials instead.
+#   bio:      a short paragraph
+#   url:      "Learn more" link (university profile, Google Scholar, ...)
+#   email:    optional
+#   pub_name: how the name appears in publications.yml author lists,
+#             so it is printed in bold there. Optional.
+#
+# When someone leaves, move them to the "Alumni" group rather than
+# deleting them; add "now:" to say where they went.
+
+- group: Principal Investigator
+  members:
+    - name: Dr Xiandong Ma
+      role: Reader in Power and Energy Systems
+      photo: ""
+      pub_name: Xiandong Ma
+      url: https://www.lancaster.ac.uk/engineering/about/people/xiandong-ma
+      bio: >-
+        Dr Ma is a Reader in power and energy systems at Lancaster University.
+        His research interests include intelligent condition monitoring and
+        fault diagnosis of renewable energy and power systems, condition-based
+        operation and maintenance, modelling, optimisation and control of
+        smart and micro grids, power conversion, renewable energy integration,
+        and AI and digital twin solutions. He is a Chartered Engineer (CEng)
+        and a Fellow of the Institution of Engineering and Technology (FIET),
+        and has been ranked among the world's top 2% scientists by citation
+        impact in the list released by Stanford University.
+
+- group: PhD Researchers
+  members:
+    - name: Zhefeng Zhang
+      role: PhD Researcher
+      photo: ""
+      pub_name: Zhefeng Zhang
+      url: ""
+      bio: >-
+        Zhefeng works on wind turbine condition monitoring from SCADA data:
+        quantum and quantum-inspired machine learning for fault detection and
+        diagnosis, remaining useful life estimation, and action-conditioned
+        world models that support maintenance and power-limit decisions. He
+        developed TurbineCore, the lab's end-to-end condition monitoring and
+        decision platform.
+
+- group: Alumni
+  members: []

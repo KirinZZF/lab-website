@@ -1,0 +1,60 @@
+# =====================================================================
+#  Site settings — the one file to edit when names, links or the
+#  repository change. After editing this file, GitHub rebuilds the site
+#  automatically on push (about one minute). See MAINTAINING.md.
+# =====================================================================
+
+title: Intelligent Energy Systems Lab
+tagline: Data-driven condition monitoring for renewable power systems
+description: >-
+  Intelligent Energy Systems Lab, School of Engineering, Lancaster University.
+  Research on wind turbine condition monitoring, quantum machine learning,
+  world models and AI for renewable energy and power systems.
+
+# --- Where the site lives -------------------------------------------
+# For a repository called "lab-website" under the account KirinZZF the
+# address is https://kirinzzf.github.io/lab-website, so:
+url: "https://kirinzzf.github.io"
+baseurl: "/lab-website"
+# If the repository is renamed to <account>.github.io, set baseurl: ""
+# If it moves to another account or organisation, change url.
+repository: KirinZZF/lab-website
+
+# --- Lab details shown in the header, footer and contact page --------
+lab:
+  pi: Dr Xiandong Ma
+  school: School of Engineering
+  university: Lancaster University
+  university_url: https://www.lancaster.ac.uk/
+  school_url: https://www.lancaster.ac.uk/engineering/
+  address:
+    - New Engineering Building
+    - Lancaster University, Gillow Ave, Bailrigg
+    - Lancaster LA1 4YW, United Kingdom
+  phone: "+44 (0)1524 593700"
+  phone_hours: "Mon – Fri, 9:00 – 17:00"
+  # Leave email empty to hide it. Use a role address that outlives
+  # individual students where possible.
+  email: ""
+
+# --- TurbineCore live demo -----------------------------------------
+# Put the public address of the TurbineCore console here when it may be
+# shown publicly (for example a Cloudflare Pages URL). Empty = the
+# "Live demo" button is hidden.
+turbinecore_demo_url: ""
+turbinecore_repo_url: ""   # e.g. https://github.com/KirinZZF/TurbineCore once public
+
+# --- Build settings (normally leave alone) --------------------------
+markdown: kramdown
+kramdown:
+  input: GFM
+plugins:
+  - jekyll-seo-tag
+exclude:
+  - README.md
+  - MAINTAINING.md
+  - Gemfile
+  - Gemfile.lock
+  - docs/
+  - vendor/
+  - .bundle/

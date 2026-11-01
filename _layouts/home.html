@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<header class="hero header-filter" style="background-image:url('{{ '/assets/img/hero.svg' | relative_url }}')">
+  <div class="container hero-inner">
+    <h1 class="hero-title">{{ page.hero_title }}</h1>
+    {% if page.hero_text %}<p class="hero-text">{{ page.hero_text }}</p>{% endif %}
+    {% if page.hero_button %}
+    <a class="btn btn-lg" href="{{ page.hero_button.url | relative_url }}">{{ page.hero_button.text }}</a>
+    {% endif %}
+  </div>
+</header>
+
+<main class="main main-raised">
+  {{ content }}
+</main>

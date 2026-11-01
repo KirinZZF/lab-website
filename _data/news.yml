@@ -1,0 +1,31 @@
+# News items, newest first. Shown on the News page; the first three also
+# appear on the home page.
+#   date:  YYYY-MM-DD (use the 1st of the month if the day is unknown)
+#   title: one line
+#   text:  short paragraph (Markdown allowed)
+#   link:  optional URL for "Read more"
+
+- date: 2026-01-01
+  title: "Quantum-inspired LSTM-Transformer paper published in Energy Conversion and Management: X"
+  text: >-
+    Our unsupervised condition monitoring framework combines a quantum LSTM
+    with a Transformer and a Bayesian sliding-window threshold, validated on
+    real SCADA data with gearbox bearing, generator winding and pitch
+    system faults.
+  link: https://doi.org/10.1016/j.ecmx.2026.101918
+
+- date: 2025-09-01
+  title: "QLSTM fault detection presented at ICAC 2025"
+  text: >-
+    Zhefeng Zhang presented "Wind Turbine Fault Detection Using Quantum
+    Long-Short Term Memory Network" at the 30th International Conference on
+    Automation and Computing.
+  link: https://doi.org/10.1109/ICAC65379.2025.11196477
+
+- date: 2025-05-01
+  title: "Review of quantum machine learning for wind turbine condition monitoring published"
+  text: >-
+    Our review in Energy Conversion and Management surveys quantum machine
+    learning methods for wind turbine condition monitoring and sets out
+    future research directions.
+  link: https://doi.org/10.1016/j.enconman.2025.119694

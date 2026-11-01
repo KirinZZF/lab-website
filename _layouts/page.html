@@ -1,0 +1,19 @@
+---
+layout: default
+---
+{% comment %}
+  Ordinary page: small red banner with the title, then the raised white
+  content card. Front matter: title (required), subtitle (optional).
+{% endcomment %}
+<header class="page-header header-filter" style="background-image:url('{{ page.hero | default: '/assets/img/hero.svg' | relative_url }}')">
+  <div class="container">
+    <h1 class="page-title">{{ page.title }}</h1>
+    {% if page.subtitle %}<p class="page-subtitle">{{ page.subtitle }}</p>{% endif %}
+  </div>
+</header>
+
+<main class="main main-raised">
+  <div class="container content{% if page.wide %} content-wide{% endif %}">
+    {{ content }}
+  </div>
+</main>

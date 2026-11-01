@@ -1,0 +1,40 @@
+# Lab publications. Newest first is not required: the page sorts by year.
+#
+# Each entry:
+#   title:   paper title
+#   authors: list, in paper order, written "Firstname Lastname".
+#            Lab members (pub_name in people.yml) are printed in bold.
+#   venue:   journal or conference name
+#   type:    journal | conference | preprint | thesis
+#   year:    number
+#   details: volume, article number, pages ... (free text, optional)
+#   doi:     DOI without the https://doi.org/ prefix (optional)
+#   url:     other link if there is no DOI (optional)
+#   status:  e.g. "Accepted / In press" (optional). Only list papers
+#            that are accepted or published; never under review.
+#   project: id of a project page, e.g. turbinecore (optional)
+
+- title: "Wind turbine condition monitoring using a quantum-inspired LSTM-Transformer framework"
+  authors: [Zhefeng Zhang, Xingxing Han, Chang Xu, Xiandong Ma]
+  venue: "Energy Conversion and Management: X"
+  type: journal
+  year: 2026
+  details: "vol. 31, 101918"
+  doi: 10.1016/j.ecmx.2026.101918
+
+- title: "Quantum machine learning based wind turbine condition monitoring: State of the art and future prospects"
+  authors: [Zhefeng Zhang, Yueqi Wu, Xiandong Ma]
+  venue: "Energy Conversion and Management"
+  type: journal
+  year: 2025
+  details: "vol. 332, 119694"
+  doi: 10.1016/j.enconman.2025.119694
+
+- title: "Wind Turbine Fault Detection Using Quantum Long-Short Term Memory Network"
+  authors: [Zhefeng Zhang, Xiandong Ma]
+  venue: "2025 30th International Conference on Automation and Computing (ICAC)"
+  type: conference
+  year: 2025
+  details: "IEEE, pp. 1–6"
+  doi: 10.1109/ICAC65379.2025.11196477
+

@@ -1,0 +1,20 @@
+---
+layout: page
+title: People
+permalink: /people/
+wide: true
+---
+{% comment %} Generated from _data/people.yml. {% endcomment %}
+{% for g in site.data.people %}
+  {% if g.members.size > 0 %}
+  <h2 class="people-group">{{ g.group }}</h2>
+  <div class="people-grid">
+    {% for m in g.members %}{% include person.html person=m %}{% endfor %}
+  </div>
+  {% endif %}
+{% endfor %}
+
+<div class="callout">
+  <h4>Join us</h4>
+  <p>We welcome enquiries from prospective PhD students and visiting researchers interested in condition monitoring, machine learning for energy systems, and power networks. <a href="{{ '/contact/' | relative_url }}">Get in touch</a>.</p>
+</div>

@@ -1,0 +1,16 @@
+---
+layout: page
+title: News
+permalink: /news/
+---
+{% comment %} Generated from _data/news.yml. {% endcomment %}
+<ul class="news-list full">
+{% for n in site.data.news %}
+  <li>
+    <time>{{ n.date | date: "%B %Y" }}</time>
+    <h4>{{ n.title }}</h4>
+    {% if n.text %}{{ n.text | markdownify }}{% endif %}
+    {% if n.link %}<a class="link-more" href="{{ n.link }}" target="_blank" rel="noopener">Read more {% include icon.html name="arrow" %}</a>{% endif %}
+  </li>
+{% endfor %}
+</ul>

@@ -1,0 +1,19 @@
+# Top menu. Each item has a title and either a url or a list of children.
+# URLs starting with "/" are inside this site; full https:// links open
+# external pages.
+- title: Home
+  url: /
+- title: Research
+  children:
+    - title: Research Themes
+      url: /research/
+    - title: TurbineCore
+      url: /research/turbinecore/
+- title: Publications
+  url: /publications/
+- title: People
+  url: /people/
+- title: News
+  url: /news/
+- title: Contact Us
+  url: /contact/

@@ -1,0 +1,40 @@
+<div class="topbar">
+  <div class="container topbar-inner">
+    <span>{{ site.lab.school }}, <a href="{{ site.lab.university_url }}">{{ site.lab.university }}</a></span>
+    {% if site.lab.phone %}<a href="tel:{{ site.lab.phone | remove: ' ' | remove: '(0)' }}">{{ site.lab.phone }}</a>{% endif %}
+  </div>
+</div>
+
+<nav class="navbar" id="navbar">
+  <div class="container navbar-inner">
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <img class="brand-logo" src="{{ '/assets/img/logo.svg' | relative_url }}" alt="" width="44" height="44">
+      <span class="brand-text">
+        <span class="brand-title">{{ site.title }}</span>
+        <span class="brand-tagline">{{ site.tagline }}</span>
+      </span>
+    </a>
+
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-menu" id="nav-menu">
+      {% for item in site.data.navigation %}
+        {% if item.children %}
+        <li class="has-dropdown">
+          <button class="nav-link dropdown-toggle" aria-expanded="false">{{ item.title }} <span class="caret"></span></button>
+          <ul class="dropdown">
+            {% for child in item.children %}
+            <li><a href="{% if child.url contains '://' %}{{ child.url }}{% else %}{{ child.url | relative_url }}{% endif %}"{% if child.url contains '://' %} target="_blank" rel="noopener"{% endif %}>{{ child.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+        {% else %}
+        {% assign item_url = item.url | relative_url %}
+        <li><a class="nav-link{% if page.url == item.url %} active{% endif %}" href="{{ item_url }}">{{ item.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</nav>

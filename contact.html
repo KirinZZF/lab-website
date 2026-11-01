@@ -1,0 +1,37 @@
+---
+layout: page
+title: Contact Us
+permalink: /contact/
+---
+<p class="lead">We are based in the {{ site.lab.school }} at {{ site.lab.university }}.</p>
+
+<div class="contact-grid">
+  <div class="card contact-card">
+    <div class="icon-circle">{% include icon.html name="pin" %}</div>
+    <h4>Address</h4>
+    <p>{{ site.lab.school }}<br>{% for line in site.lab.address %}{{ line }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}</p>
+  </div>
+  <div class="card contact-card">
+    <div class="icon-circle">{% include icon.html name="phone" %}</div>
+    <h4>Phone</h4>
+    <p>{{ site.lab.phone }}<br>{{ site.lab.phone_hours }}</p>
+  </div>
+  <div class="card contact-card">
+    <div class="icon-circle">{% include icon.html name="mail" %}</div>
+    <h4>Email</h4>
+    <p>{% if site.lab.email != "" %}<a href="mailto:{{ site.lab.email }}">{{ site.lab.email }}</a>{% else %}Please contact {{ site.lab.pi }} through the <a href="https://www.lancaster.ac.uk/engineering/about/people/xiandong-ma" target="_blank" rel="noopener">university profile</a>.{% endif %}</p>
+  </div>
+</div>
+
+<h2>PhD opportunities</h2>
+<p>
+  Funded PhD positions are advertised through the {{ site.lab.school }}.
+  Self-funded and scholarship applicants with a background in electrical,
+  mechanical or control engineering, computer science or applied mathematics
+  are welcome to get in touch with a CV and a short statement of research
+  interests.
+</p>
+
+<div class="map card">
+  <iframe title="Map of Lancaster University" src="https://www.openstreetmap.org/export/embed.html?bbox=-2.795%2C54.000%2C-2.775%2C54.016&amp;layer=mapnik&amp;marker=54.0085%2C-2.7856" loading="lazy"></iframe>
+</div>

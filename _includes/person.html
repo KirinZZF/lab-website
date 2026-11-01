@@ -1,0 +1,21 @@
+{%- assign m = include.person -%}
+<article class="card card-profile">
+  <div class="card-avatar">
+    {%- if m.photo and m.photo != "" -%}
+      <img src="{{ '/assets/img/people/' | append: m.photo | relative_url }}" alt="{{ m.name }}" loading="lazy">
+    {%- else -%}
+      {%- assign parts = m.name | remove: "Dr " | remove: "Prof " | split: " " -%}
+      <span class="initials">{{ parts.first | slice: 0 }}{{ parts.last | slice: 0 }}</span>
+    {%- endif -%}
+  </div>
+  <div class="card-body">
+    <h3 class="card-title">{{ m.name }}</h3>
+    <h6 class="card-category">{{ m.role }}</h6>
+    {% if m.bio %}<p class="card-description">{{ m.bio }}</p>{% endif %}
+    {% if m.now %}<p class="card-description"><em>Now: {{ m.now }}</em></p>{% endif %}
+    <div class="card-links">
+      {% if m.url and m.url != "" %}<a class="btn btn-sm" href="{{ m.url }}" target="_blank" rel="noopener">Learn more</a>{% endif %}
+      {% if m.email and m.email != "" %}<a class="btn btn-sm btn-ghost" href="mailto:{{ m.email }}">Email</a>{% endif %}
+    </div>
+  </div>
+</article>

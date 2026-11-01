@@ -1,0 +1,90 @@
+# Research themes: shown as cards on the home page and as sections on
+# the Research Themes page, in this order.
+#   id:      short anchor name (no spaces)
+#   title:   card title
+#   label:   small line above the title
+#   icon:    one of: pulse, search, clock, cube, atom, grid
+#   summary: one or two sentences for the card
+#   body:    longer text for the Research page (Markdown allowed)
+#   link:    optional page for more (e.g. a project page)
+
+- id: detection
+  label: Theme 1
+  title: Fault Detection
+  icon: pulse
+  summary: >-
+    Spotting abnormal turbine behaviour early from routine SCADA data,
+    without labelled faults.
+  body: >-
+    Normal behaviour models learn how a healthy turbine relates wind, power,
+    temperatures and commands. The residual between what the model expects
+    and what the turbine reports becomes an anomaly score, and adaptive
+    thresholds (for example Bayesian inference over a sliding window) decide
+    when a deviation is worth acting on. Our models include quantum LSTM and
+    quantum-inspired LSTM-Transformer networks.
+
+- id: diagnosis
+  label: Theme 2
+  title: Fault Diagnosis & Root Cause
+  icon: search
+  summary: >-
+    Locating which component is failing and tracing how the fault
+    propagates through the turbine.
+  body: >-
+    An abnormal reading is usually a symptom, not the cause. We treat
+    diagnosis as physics-constrained spatio-temporal reasoning: a prior graph
+    built from the turbine's physical coupling chains is combined with learned
+    temporal representations, giving both system-level fault classification
+    and variable-level root-cause tracing.
+
+- id: prognosis
+  label: Theme 3
+  title: Prognosis & Remaining Useful Life
+  icon: clock
+  summary: >-
+    Estimating how likely a component is to fail over the coming weeks, with
+    calibrated probabilities.
+  body: >-
+    From the same health evidence we estimate failure probability over
+    horizons of days to weeks and remaining useful life, recalibrated against
+    recorded failures so that a stated probability can be trusted in
+    maintenance planning.
+
+- id: world-models
+  label: Theme 4
+  title: World Models & Decision Making
+  icon: cube
+  summary: >-
+    Learning how turbines respond to operator commands, and using that to
+    choose safer operating strategies.
+  body: >-
+    An action-conditioned world model, shared across wind farms with
+    different sensors and naming, forecasts every channel with an
+    uncertainty band under a given control set-point. Counterfactual queries
+    ("what if this turbine were limited to 1.6 MW tomorrow?") feed
+    pessimistic offline planning that trades energy against failure risk.
+
+- id: qml
+  label: Cross-cutting
+  title: Quantum Machine Learning
+  icon: atom
+  summary: >-
+    Variational quantum circuits that capture high-order interactions among
+    variables with few parameters.
+  body: >-
+    We study how quantum and quantum-inspired models, built on variational
+    quantum circuits, can model the coupled nonlinear dynamics of wind
+    turbines, including how the number of input variables maps to the number
+    of qubits required.
+
+- id: power-systems
+  label: Cross-cutting
+  title: Smart Grids & Digital Twins
+  icon: grid
+  summary: >-
+    AI and digital twin solutions for the operation of renewable-rich power
+    networks.
+  body: >-
+    Beyond individual turbines, the group works on modelling, optimisation and
+    control of smart and micro grids, renewable energy integration, and
+    autonomous operation of power networks.

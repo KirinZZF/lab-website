@@ -1,0 +1,24 @@
+{%- comment -%}
+  One publication entry. Usage: {% include publication.html pub=p %}
+  Lab members listed with pub_name in people.yml are printed in bold.
+{%- endcomment -%}
+{%- assign p = include.pub -%}
+{%- assign member_names = "" | split: "" -%}
+{%- for g in site.data.people -%}{%- for m in g.members -%}{%- if m.pub_name -%}{%- assign member_names = member_names | push: m.pub_name -%}{%- endif -%}{%- endfor -%}{%- endfor -%}
+<li class="pub">
+  <div class="pub-title">
+    {%- if p.doi -%}<a href="https://doi.org/{{ p.doi }}" target="_blank" rel="noopener">{{ p.title }}</a>
+    {%- elsif p.url -%}<a href="{{ p.url }}" target="_blank" rel="noopener">{{ p.title }}</a>
+    {%- else -%}{{ p.title }}{%- endif -%}
+    {%- if p.status %} <span class="tag">{{ p.status }}</span>{% endif -%}
+  </div>
+  <div class="pub-authors">
+    {%- for a in p.authors -%}
+      {%- if member_names contains a -%}<strong>{{ a }}</strong>{%- else -%}{{ a }}{%- endif -%}
+      {%- unless forloop.last -%}, {% endunless -%}
+    {%- endfor -%}
+  </div>
+  <div class="pub-venue"><em>{{ p.venue }}</em>{% if p.details %}, {{ p.details }}{% endif %}, {{ p.year }}.
+    {%- if p.doi %} <a class="pub-doi" href="https://doi.org/{{ p.doi }}" target="_blank" rel="noopener">doi:{{ p.doi }}</a>{% endif -%}
+  </div>
+</li>

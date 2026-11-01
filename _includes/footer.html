@@ -1,0 +1,37 @@
+<section class="get-in-touch">
+  <div class="container">
+    <h2 class="section-title">Get in Touch</h2>
+    <div class="touch-grid">
+      <div class="touch-item">
+        <div class="icon-circle">{% include icon.html name="pin" %}</div>
+        <h4>Find us at the office</h4>
+        <p>{% for line in site.lab.address %}{{ line }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}</p>
+      </div>
+      <div class="touch-item">
+        <div class="icon-circle">{% include icon.html name="phone" %}</div>
+        <h4>Give us a ring</h4>
+        <p>Tel: {{ site.lab.phone }}<br>{{ site.lab.phone_hours }}</p>
+      </div>
+      <div class="touch-item">
+        <div class="icon-circle">{% include icon.html name="mail" %}</div>
+        <h4>Contact Us</h4>
+        <p>Interested in a PhD, a collaboration or our data and software?</p>
+        <a class="btn" href="{{ '/contact/' | relative_url }}">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-logos">
+      <a href="{{ site.lab.university_url }}" target="_blank" rel="noopener" class="footer-uni">{{ site.lab.university }}</a>
+      <span class="sep">·</span>
+      <a href="{{ site.lab.school_url }}" target="_blank" rel="noopener">{{ site.lab.school }}</a>
+    </div>
+    <div class="footer-copy">
+      &copy; {{ 'now' | date: '%Y' }} {{ site.title }} ·
+      <a href="https://github.com/{{ site.repository }}" target="_blank" rel="noopener">Site source on GitHub</a>
+    </div>
+  </div>
+</footer>

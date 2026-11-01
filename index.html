@@ -1,0 +1,134 @@
+---
+layout: home
+title: Home
+hero_title: Making renewable power systems watch over themselves
+hero_text: >-
+  We build data-driven methods that read a wind turbine's own operating
+  record, detect and diagnose faults early, predict failures, and decide how
+  the machine should be run.
+hero_button:
+  text: Our research
+  url: /research/
+---
+{% comment %}
+  Home page. Text lives in this file; the cards are filled from
+  _data/research.yml, _data/news.yml and _data/publications.yml.
+{% endcomment %}
+
+<section class="section">
+  <div class="container text-center">
+    <h2 class="section-title">{{ site.title }}</h2>
+    <h5 class="section-subtitle">{{ site.lab.school }}, {{ site.lab.university }}</h5>
+    <div class="feature-grid">
+      <a class="feature" href="{{ '/people/' | relative_url }}">
+        <div class="icon-circle icon-lg">{% include icon.html name="users" %}</div>
+        <h4>About Us</h4>
+        <p>Led by {{ site.lab.pi }}, the lab brings together power engineering and machine learning.</p>
+      </a>
+      <a class="feature" href="{{ '/research/turbinecore/' | relative_url }}">
+        <div class="icon-circle icon-lg">{% include icon.html name="cube" %}</div>
+        <h4>TurbineCore</h4>
+        <p>Our end-to-end platform for world-model-based wind turbine condition monitoring.</p>
+      </a>
+      <a class="feature" href="{{ '/contact/' | relative_url }}">
+        <div class="icon-circle icon-lg">{% include icon.html name="mail" %}</div>
+        <h4>Contact Us</h4>
+        <p>PhD opportunities, collaborations, and access to our software.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-tint">
+  <div class="container narrow">
+    <p class="lead">
+      Wind turbines operate for decades in turbulent wind, ice and salt spray.
+      Component degradation develops over weeks to months before it ends in a
+      sudden, costly stoppage, often offshore or on a remote ridge where
+      repairs need cranes, vessels and weather windows. Every turbine already
+      records its own behaviour through SCADA. The open question is how to
+      turn that record into early, trustworthy and actionable knowledge.
+    </p>
+    <blockquote>
+      Our aim is condition monitoring that explains <em>why</em> a turbine
+      behaves as it does, predicts <em>what</em> happens next, and evaluates
+      <em>what would happen</em> if it were operated differently.
+    </blockquote>
+    <ul class="checklist">
+      <li>Early, unsupervised fault detection from routine operating data</li>
+      <li>Component-level diagnosis and root-cause tracing grounded in turbine physics</li>
+      <li>Calibrated failure probabilities and remaining useful life</li>
+      <li>Action-conditioned world models that support operating decisions</li>
+    </ul>
+    <p class="text-center"><a class="btn" href="{{ '/research/' | relative_url }}">Learn more</a></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container text-center">
+    <h2 class="section-title">Research Themes</h2>
+    <h5 class="section-subtitle">From detecting a fault to deciding what to do about it</h5>
+    <div class="card-grid">
+      {% for t in site.data.research %}
+      <a class="card card-theme" href="{{ '/research/' | relative_url }}#{{ t.id }}">
+        <div class="card-icon">{% include icon.html name=t.icon %}</div>
+        <h6 class="card-category">{{ t.label }}</h6>
+        <h4 class="card-title">{{ t.title }}</h4>
+        <p class="card-description">{{ t.summary }}</p>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-tint">
+  <div class="container">
+    <div class="spotlight">
+      <div class="spotlight-img card">
+        <img src="{{ '/assets/img/results/tc-diagnosis-scores.png' | relative_url }}" alt="TurbineCore fault diagnosis accuracy, precision, recall and F1 on four wind farms" loading="lazy">
+      </div>
+      <div class="spotlight-text">
+        <h6 class="card-category">Featured project</h6>
+        <h3 class="title">TurbineCore</h3>
+        <p>
+          TurbineCore reads a wind turbine's own SCADA record, works out how
+          healthy it is, and decides how hard it should be allowed to run
+          today. A world model shared across five wind farms forecasts every
+          channel under a given operator command; on top of it the system
+          detects anomalies, names the faulty component, estimates failure
+          probability over the coming weeks, writes the day up, and learns a
+          power-limit policy that trades energy against failure risk.
+        </p>
+        <a class="btn" href="{{ '/research/turbinecore/' | relative_url }}">Explore TurbineCore</a>
+        {% if site.turbinecore_demo_url != "" %}<a class="btn btn-ghost" href="{{ site.turbinecore_demo_url }}" target="_blank" rel="noopener">Live demo</a>{% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <h3 class="title">Latest News</h3>
+        <ul class="news-list">
+          {% for n in site.data.news limit:3 %}
+          <li>
+            <time>{{ n.date | date: "%B %Y" }}</time>
+            <h5>{% if n.link %}<a href="{{ n.link }}" target="_blank" rel="noopener">{{ n.title }}</a>{% else %}{{ n.title }}{% endif %}</h5>
+          </li>
+          {% endfor %}
+        </ul>
+        <a class="link-more" href="{{ '/news/' | relative_url }}">All news {% include icon.html name="arrow" %}</a>
+      </div>
+      <div>
+        <h3 class="title">Recent Publications</h3>
+        {% assign pubs = site.data.publications | where_exp: "p", "p.status == nil" | sort: "year" | reverse %}
+        <ul class="pub-list compact">
+          {% for p in pubs limit:3 %}{% include publication.html pub=p %}{% endfor %}
+        </ul>
+        <a class="link-more" href="{{ '/publications/' | relative_url }}">All publications {% include icon.html name="arrow" %}</a>
+      </div>
+    </div>
+  </div>
+</section>

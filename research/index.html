@@ -1,0 +1,53 @@
+---
+layout: page
+title: Research Themes
+subtitle: From detecting a fault to deciding what to do about it
+permalink: /research/
+---
+{% comment %} Sections are generated from _data/research.yml. {% endcomment %}
+
+<p class="lead">
+  Our work follows the life of a fault: noticing that a turbine has stopped
+  behaving normally, finding which component is responsible, estimating how
+  long it has left, and choosing how the turbine should be operated in the
+  meantime. Quantum machine learning and digital twins run across all of it.
+</p>
+
+<blockquote>
+  Methods are developed and validated on real SCADA data from operational
+  wind farms, with leakage-free evaluation across turbines and farms.
+</blockquote>
+
+{% for t in site.data.research %}
+<section class="theme-block" id="{{ t.id }}">
+  <div class="theme-icon icon-circle icon-lg">{% include icon.html name=t.icon %}</div>
+  <div>
+    <h6 class="card-category">{{ t.label }}</h6>
+    <h2>{{ t.title }}</h2>
+    {{ t.body | markdownify }}
+  </div>
+</section>
+{% endfor %}
+
+<h2 class="text-center mt-xl">Selected Results</h2>
+<p class="text-center">From <a href="https://doi.org/10.1016/j.ecmx.2026.101918" target="_blank" rel="noopener">Zhang et al., <em>Energy Conversion and Management: X</em>, 2026</a>.</p>
+<div class="card-grid two">
+  <figure class="card figure-card">
+    <img src="{{ '/assets/img/results/qlstm-tr-prediction-wt5.png' | relative_url }}" alt="Measured and QLSTM-Transformer predicted temperature on the test set" loading="lazy">
+    <figcaption>Normal behaviour modelling: measured temperature against the QLSTM-Transformer prediction on the test set.</figcaption>
+  </figure>
+  <figure class="card figure-card">
+    <img src="{{ '/assets/img/results/qlstm-tr-detection-wt5.png' | relative_url }}" alt="Residual indicator crossing the adaptive threshold before the alarm-log fault" loading="lazy">
+    <figcaption>Fault detection: the residual indicator crosses the BISW adaptive threshold at sample 1770, well before the fault recorded in the alarm log at sample 2513.</figcaption>
+  </figure>
+</div>
+
+<h2 class="text-center mt-xl">Projects</h2>
+<a class="card spotlight spotlight-card" href="{{ '/research/turbinecore/' | relative_url }}">
+  <img src="{{ '/assets/img/results/tc-policy-cumulative.png' | relative_url }}" alt="" loading="lazy">
+  <div class="card-body">
+    <h6 class="card-category">Wind turbine condition monitoring</h6>
+    <h4 class="card-title">TurbineCore</h4>
+    <p class="card-description">World-model-based autonomous condition monitoring and decision making across five wind farms.</p>
+  </div>
+</a>

@@ -1,0 +1,29 @@
+---
+layout: page
+title: Publications
+permalink: /publications/
+---
+{% comment %}
+  Generated from _data/publications.yml: grouped by type, then by year
+  (newest first). To add a paper, edit that file only.
+{% endcomment %}
+{% assign groups = "journal:Journal Papers|conference:Conference Papers|preprint:Preprints|thesis:Theses" | split: "|" %}
+
+<nav class="pill-nav">
+{% for g in groups %}{% assign kv = g | split: ":" %}{% assign n = site.data.publications | where: "type", kv[0] | size %}{% if n > 0 %}<a href="#{{ kv[0] }}">{{ kv[1] }} <span>{{ n }}</span></a>{% endif %}{% endfor %}
+</nav>
+
+{% for g in groups %}
+  {% assign kv = g | split: ":" %}
+  {% assign items = site.data.publications | where: "type", kv[0] %}
+  {% if items.size > 0 %}
+  <h2 id="{{ kv[0] }}" class="pub-group">{{ kv[1] }}</h2>
+  {% assign by_year = items | group_by: "year" | sort: "name" | reverse %}
+  {% for y in by_year %}
+    <h3 class="pub-year">{{ y.name }}</h3>
+    <ol class="pub-list">
+      {% for p in y.items %}{% include publication.html pub=p %}{% endfor %}
+    </ol>
+  {% endfor %}
+  {% endif %}
+{% endfor %}
