@@ -6,11 +6,12 @@
 #   icon:    one of: pulse, search, clock, cube, atom, grid
 #   summary: one or two sentences for the card
 #   body:    longer text for the Research page (Markdown allowed)
-#   link:    optional page for more (e.g. a project page)
+#   link:    optional subpage with results (cards and "Results" links go there)
 
 - id: detection
   label: Theme 1
-  title: Fault Detection
+  title: Anomaly Detection
+  link: /research/anomaly-detection/
   icon: pulse
   summary: >-
     Spotting abnormal turbine behaviour early from routine SCADA data,
@@ -26,6 +27,7 @@
 - id: diagnosis
   label: Theme 2
   title: Fault Diagnosis & Root Cause
+  link: /research/fault-diagnosis/
   icon: search
   summary: >-
     Locating which component is failing and tracing how the fault
@@ -40,6 +42,7 @@
 - id: prognosis
   label: Theme 3
   title: Prognosis & Remaining Useful Life
+  link: /research/turbinecore/
   icon: clock
   summary: >-
     Estimating how likely a component is to fail over the coming weeks, with
@@ -53,6 +56,7 @@
 - id: world-models
   label: Theme 4
   title: World Models & Decision Making
+  link: /research/turbinecore/
   icon: cube
   summary: >-
     Learning how turbines respond to operator commands, and using that to

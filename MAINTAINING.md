@@ -22,7 +22,7 @@ Content and appearance are kept apart:
 | News | `_data/news.yml` |
 | Research theme cards and Research page | `_data/research.yml` |
 | Home page text | `index.html` (text between the tags) |
-| TurbineCore project page | `research/turbinecore.md` |
+| Research subpages | `research/anomaly-detection.html`, `research/fault-diagnosis.html`, `research/turbinecore.md` |
 | Contact page | `contact.html` |
 | Colours, fonts, spacing | `assets/css/main.css` (variables at the top) |
 | Header, footer, layouts | `_includes/`, `_layouts/` (rarely needed) |

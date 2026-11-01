@@ -5,8 +5,12 @@
   url: /
 - title: Research
   children:
-    - title: Research Themes
+    - title: Overview
       url: /research/
+    - title: Anomaly Detection
+      url: /research/anomaly-detection/
+    - title: Fault Diagnosis & Root Cause
+      url: /research/fault-diagnosis/
     - title: TurbineCore
       url: /research/turbinecore/
 - title: Publications

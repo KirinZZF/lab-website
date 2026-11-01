@@ -1,0 +1,97 @@
+---
+layout: page
+title: Anomaly Detection
+subtitle: Spotting abnormal turbine behaviour early, without labelled faults
+permalink: /research/anomaly-detection/
+---
+
+<p class="lead">
+  A normal behaviour model learns how a healthy turbine relates wind, power,
+  temperatures and commands. When the turbine stops behaving that way, the
+  gap between what the model expects and what the turbine reports grows, and
+  an adaptive threshold decides when that gap is a fault rather than noise.
+  No fault labels are needed for training.
+</p>
+
+<p>
+  We use quantum machine learning for the normal behaviour model. Variational
+  quantum circuits embedded in the LSTM gates (QLSTM) capture high-order
+  interactions among SCADA variables in Hilbert space with few parameters,
+  and the number of input variables sets the number of qubits.
+</p>
+
+<h2>QLSTM normal behaviour model</h2>
+<p class="table-src"><a href="https://doi.org/10.1109/ICAC65379.2025.11196477" target="_blank" rel="noopener">Zhang &amp; Ma, ICAC 2025</a>. Gearbox bearing temperature on a fault-free test set; faults flagged by a T-distribution residual threshold.</p>
+<div class="stat-grid">
+  <div class="stat"><span class="stat-value">0.9446</span><span class="stat-label">QLSTM R²<br><small>LSTM 0.9358</small></span></div>
+  <div class="stat"><span class="stat-value">1.931</span><span class="stat-label">QLSTM RMSE<br><small>LSTM 2.278</small></span></div>
+  <div class="stat"><span class="stat-value">7.67 h</span><span class="stat-label">earlier detection of the gearbox bearing fault than LSTM</span></div>
+</div>
+
+<h2>QLSTM-Transformer with BISW thresholding</h2>
+<p class="table-src"><a href="https://doi.org/10.1016/j.ecmx.2026.101918" target="_blank" rel="noopener">Zhang et al., <em>Energy Conversion and Management: X</em>, 2026</a>. Three real faults: gearbox bearing overheating, generator winding overheating and pitch control failure. BISW combines Bayesian inference with a sliding window so the threshold follows both short-term variation and long-term trend in the residual.</p>
+
+<div class="stat-grid">
+  <div class="stat"><span class="stat-value">123.8 h</span><span class="stat-label">warning before shutdown<br><small>gearbox bearing</small></span></div>
+  <div class="stat"><span class="stat-value">77.5 h</span><span class="stat-label">warning before shutdown<br><small>generator winding</small></span></div>
+  <div class="stat"><span class="stat-value">122.7 h</span><span class="stat-label">warning before shutdown<br><small>pitch control</small></span></div>
+  <div class="stat"><span class="stat-value">0</span><span class="stat-label">false alarms<br><small>on all three faults</small></span></div>
+</div>
+
+<div class="table-wrap">
+<table class="metrics">
+  <caption>Normal behaviour modelling accuracy on fault-free test data</caption>
+  <thead>
+    <tr><th rowspan="2">Model</th><th colspan="2">Gearbox</th><th colspan="2">Generator</th><th colspan="2">Pitch</th></tr>
+    <tr><th>R²</th><th>RMSE</th><th>R²</th><th>RMSE</th><th>R²</th><th>RMSE</th></tr>
+  </thead>
+  <tbody>
+    <tr class="best"><td>QLSTM-Transformer</td><td>0.9575</td><td>1.128</td><td>0.9518</td><td>1.076</td><td>0.9791</td><td>0.327</td></tr>
+    <tr><td>LSTM-Transformer</td><td>0.9468</td><td>1.390</td><td>0.9497</td><td>1.127</td><td>0.9675</td><td>0.368</td></tr>
+    <tr><td>LSTM</td><td>0.9377</td><td>1.460</td><td>0.9243</td><td>2.698</td><td>0.9516</td><td>0.420</td></tr>
+    <tr><td>Transformer</td><td>0.9375</td><td>1.629</td><td>0.9041</td><td>3.510</td><td>0.9534</td><td>0.416</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="table-wrap">
+<table class="metrics">
+  <caption>Hours of warning before turbine shutdown (BISW thresholding)</caption>
+  <thead>
+    <tr><th rowspan="2">Model</th><th colspan="2">Gearbox bearing</th><th colspan="2">Generator winding</th><th colspan="2">Pitch control</th></tr>
+    <tr><th>Hours</th><th>False alarm</th><th>Hours</th><th>False alarm</th><th>Hours</th><th>False alarm</th></tr>
+  </thead>
+  <tbody>
+    <tr class="best"><td>QLSTM-Transformer</td><td>123.83</td><td>No</td><td>77.50</td><td>No</td><td>122.67</td><td>No</td></tr>
+    <tr><td>LSTM-Transformer</td><td>109.67</td><td>No</td><td>75.50</td><td>No</td><td>68.83</td><td>No</td></tr>
+    <tr><td>LSTM</td><td>92.33</td><td>Yes</td><td>32.50</td><td>No</td><td>121.00</td><td>No</td></tr>
+    <tr><td>Transformer</td><td>109.67</td><td>Yes</td><td>76.83</td><td>No</td><td>120.83</td><td>No</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="table-note">The paper also compares KDE and EWMA thresholds and the DIV and TSDT methods. QLSTM-Transformer-BISW gives the longest (or joint-longest) warning on all three faults while raising no false alarms.</p>
+
+<h3>Detection on the three faults</h3>
+<div class="card-grid two">
+  <figure class="card figure-card">
+    <img src="{{ '/assets/img/results/qlstm-tr-detection-wt5-gearbox.png' | relative_url }}" alt="Residual indicator crossing the adaptive threshold before the gearbox bearing fault" loading="lazy">
+    <figcaption><strong>Gearbox bearing.</strong> The residual first crosses the BISW threshold at sample 1770; the alarm log records the fault at sample 2513.</figcaption>
+  </figure>
+  <figure class="card figure-card">
+    <img src="{{ '/assets/img/results/qlstm-tr-detection-wt9-generator.png' | relative_url }}" alt="Residual indicator crossing the adaptive threshold before the generator winding fault" loading="lazy">
+    <figcaption><strong>Generator winding.</strong> First detection at sample 1220, against the alarm-log fault at sample 1685.</figcaption>
+  </figure>
+  <figure class="card figure-card">
+    <img src="{{ '/assets/img/results/qlstm-tr-detection-wt5-pitch.png' | relative_url }}" alt="Residual indicator crossing the adaptive threshold before the pitch control fault" loading="lazy">
+    <figcaption><strong>Pitch control.</strong> Residual indicator and adaptive threshold ahead of the recorded pitch system fault.</figcaption>
+  </figure>
+  <figure class="card figure-card">
+    <img src="{{ '/assets/img/results/qlstm-tr-prediction-wt5.png' | relative_url }}" alt="Measured and QLSTM-Transformer predicted temperature on the test set" loading="lazy">
+    <figcaption><strong>Normal behaviour model.</strong> Measured temperature against the QLSTM-Transformer prediction on the test set.</figcaption>
+  </figure>
+</div>
+
+<div class="callout">
+  <h4>At fleet scale</h4>
+  <p>In <a href="{{ '/research/turbinecore/' | relative_url }}">TurbineCore</a>, a world model trained on confirmed-healthy periods plays the role of the normal behaviour model across whole wind farms, and its residual is the anomaly score.</p>
+</div>

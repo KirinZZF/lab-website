@@ -70,7 +70,7 @@ hero_button:
     <h5 class="section-subtitle">From detecting a fault to deciding what to do about it</h5>
     <div class="card-grid">
       {% for t in site.data.research %}
-      <a class="card card-theme" href="{{ '/research/' | relative_url }}#{{ t.id }}">
+      <a class="card card-theme" href="{% if t.link %}{{ t.link | relative_url }}{% else %}{{ '/research/' | relative_url }}#{{ t.id }}{% endif %}">
         <div class="card-icon">{% include icon.html name=t.icon %}</div>
         <h6 class="card-category">{{ t.label }}</h6>
         <h4 class="card-title">{{ t.title }}</h4>

@@ -1,0 +1,88 @@
+---
+layout: page
+title: Fault Diagnosis & Root Cause
+subtitle: Finding which component is failing, and where the fault started
+permalink: /research/fault-diagnosis/
+---
+
+<p class="lead">
+  An abnormal reading is usually a symptom, not the cause. A fault starts in
+  one place and spreads through the turbine's physical coupling chains:
+  lubrication to bearing temperature, converter voltage to pitch motor
+  current, and on to rotor speed and power. To support maintenance,
+  diagnosis has to name both the faulty subsystem and the variable where the
+  abnormality began.
+</p>
+
+<p>
+  We treat diagnosis as physics-constrained spatio-temporal reasoning. A
+  quantum-enhanced digital twin learns the turbine's normal dynamics from
+  SCADA data and scores how abnormal each variable is over time. A prior
+  graph built from known physical couplings between turbine variables then
+  constrains how abnormality is allowed to propagate. The result is a
+  system-level fault class together with a variable-level root-cause trace.
+</p>
+
+<h2>Diagnosis accuracy</h2>
+<p class="table-src">Real wind farm SCADA data; faults in the pitch system, gearbox, generator and power converter.</p>
+<div class="stat-grid">
+  <div class="stat"><span class="stat-value">99.57%</span><span class="stat-label">fault classification accuracy</span></div>
+  <div class="stat"><span class="stat-value">0.977</span><span class="stat-label">F1-score<br><small>precision 0.989, recall 0.967</small></span></div>
+  <div class="stat"><span class="stat-value">0.9968</span><span class="stat-label">R² of the temporal model<br><small>1 − nRMSE 0.9994</small></span></div>
+</div>
+
+<div class="table-wrap">
+<table class="metrics">
+  <caption>Comparison with recent diagnosis and temporal modelling methods</caption>
+  <thead><tr><th>Method</th><th>Accuracy</th><th>F1</th><th>Precision</th><th>Recall</th><th>R²</th><th>1 − nRMSE</th></tr></thead>
+  <tbody>
+    <tr class="best"><td>Ours</td><td>0.9957</td><td>0.9769</td><td>0.9888</td><td>0.9668</td><td>0.9968</td><td>0.9994</td></tr>
+    <tr><td>DBANet</td><td>0.9913</td><td>0.9625</td><td>0.9732</td><td>0.9548</td><td>–</td><td>–</td></tr>
+    <tr><td>3DSE-CNN-2DLSTM</td><td>0.9896</td><td>0.9578</td><td>0.9691</td><td>0.9494</td><td>–</td><td>–</td></tr>
+    <tr><td>PatchTST</td><td>–</td><td>–</td><td>–</td><td>–</td><td>0.9974</td><td>0.9963</td></tr>
+    <tr><td>PGM-MTGNN</td><td>–</td><td>–</td><td>–</td><td>–</td><td>0.9899</td><td>0.9903</td></tr>
+    <tr><td>GRU</td><td>–</td><td>–</td><td>–</td><td>–</td><td>0.9716</td><td>0.9654</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="table-note">Diagnosis baselines classify faults only; temporal baselines only forecast. Our framework does both with about 0.30 M parameters, against 2.70 M for PatchTST.</p>
+
+<h2>Root-cause tracing</h2>
+<p>
+  Each graph shows the turbine's SCADA variables as nodes, coloured by
+  normalised anomaly score from deep blue (normal) to red (strongest
+  abnormal contribution). Snapshots are taken at time steps before the fault
+  is triggered (T = 0). Node labels: GB gearbox, P pitch system, GE generator,
+  I inverter, G general operation (e.g. rotor speed).
+</p>
+
+<h3>Case: gearbox oil sump over-temperature</h3>
+<p>The alarm logs attribute this fault to a blocked oil pipeline: abnormal oil pressure reduced lubrication and led to thermal runaway. The trace finds abnormality forming inside the gearbox lubrication and thermal variables long before the fault, and staying concentrated there, consistent with the maintenance record.</p>
+<div class="card-grid one">
+  <figure class="card figure-card">
+    <img src="{{ '/assets/img/results/rca-gearbox-tracing.png' | relative_url }}" alt="Root-cause tracing graphs of the gearbox fault at T = -140, -130, -60 and 0" loading="lazy">
+    <figcaption><strong>Tracing snapshots.</strong> Abnormality first appears in gearbox temperatures and oil pressure (T = −140), concentrates within the gearbox (T = −130, −60), and peaks in the oil sump and lubrication variables at the fault (T = 0).</figcaption>
+  </figure>
+  <figure class="card figure-card">
+    <img src="{{ '/assets/img/results/rca-gearbox-severity.png' | relative_url }}" alt="Normalised anomaly severity of gearbox variables before the fault" loading="lazy">
+    <figcaption><strong>Severity over time.</strong> Gearbox temperatures (GB2–GB5) rise sharply around T = −165 to −150; short oil pressure peaks (GB0, GB1) follow near T = −125.</figcaption>
+  </figure>
+</div>
+
+<h3>Case: pitch angle deviation</h3>
+<p>Pitch faults typically start with unstable converter voltage or abnormal motor current, which push the blade away from its intended angle and then disturb rotor speed and power. The trace identifies the pitch converter as the dominant source.</p>
+<div class="card-grid one">
+  <figure class="card figure-card">
+    <img src="{{ '/assets/img/results/rca-pitch-tracing.png' | relative_url }}" alt="Root-cause tracing graphs of the pitch fault at T = -175, -110, -100 and 0" loading="lazy">
+    <figcaption><strong>Tracing snapshots.</strong> Uniformly low at T = −175; pitch inverter voltage and motor currents rise at T = −110; a pitch-centred abnormal cluster forms by T = −100 and remains dominant at the fault.</figcaption>
+  </figure>
+  <figure class="card figure-card">
+    <img src="{{ '/assets/img/results/rca-pitch-severity.png' | relative_url }}" alt="Normalised anomaly severity of pitch variables before the fault" loading="lazy">
+    <figcaption><strong>Severity over time.</strong> Pitch inverter voltages and motor currents spike early, followed later by converter temperatures as the disturbance accumulates thermally.</figcaption>
+  </figure>
+</div>
+
+<div class="callout">
+  <h4>At fleet scale</h4>
+  <p>In <a href="{{ '/research/turbinecore/' | relative_url }}">TurbineCore</a>, component-level diagnosis covers twelve turbine components across four wind farms.</p>
+</div>
