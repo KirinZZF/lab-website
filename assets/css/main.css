@@ -298,6 +298,27 @@ ul.pub-list { list-style: none; padding-left: 0; }
 @media (max-width: 900px) { .loop { grid-template-columns: repeat(3, 1fr); } .loop-step::after { display: none; } }
 @media (max-width: 520px) { .loop { grid-template-columns: 1fr 1fr; } }
 
+/* ---------- Key results by project ---------- */
+.kr-panel { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-lg); padding: 24px 26px 20px; margin-top: 24px; text-align: left; }
+.kr-head { display: flex; align-items: center; gap: 14px; padding-bottom: 14px; margin-bottom: 16px; border-bottom: 1px solid var(--line); }
+.kr-head h6 { margin: 0 0 2px; color: var(--brand); }
+.kr-head h3 { margin: 0; font-size: 1.4rem; }
+.kr-head .link-more { margin-left: auto; white-space: nowrap; }
+.kr-stats { display: grid; gap: 18px; }
+.kr-stats.four { grid-template-columns: repeat(4, 1fr); }
+.kr-stats.three { grid-template-columns: repeat(3, 1fr); }
+.kr-stat { display: flex; flex-direction: column; gap: 4px; padding-left: 12px; border-left: 3px solid var(--brand); }
+.kr-stat .stat-value { font-size: 1.9rem; }
+.kr-wide .kr-stat .stat-value { font-size: 2.3rem; }
+.kr-note { font-size: .82rem; color: var(--muted); margin: 16px 0 0; }
+.kr-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 991px) { .kr-pair { grid-template-columns: 1fr; } }
+@media (max-width: 640px) {
+  .kr-stats.four, .kr-stats.three { grid-template-columns: 1fr 1fr; }
+  .kr-head { flex-wrap: wrap; }
+  .kr-head .link-more { margin-left: 0; }
+}
+
 /* ---------- Contact ---------- */
 .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 2rem 0; }
 .contact-card { padding: 26px; }

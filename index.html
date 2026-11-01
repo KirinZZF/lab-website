@@ -82,21 +82,60 @@ hero_button:
 </section>
 
 <section class="section section-dark">
-  <div class="container text-center">
-    <h2 class="section-title">Key Results</h2>
-    <h5 class="section-subtitle">What autonomous, condition-aware operation is worth, estimated on real wind farm records</h5>
-    <div class="stat-grid stat-impact">
-      <div class="stat"><span class="stat-value">+1.5%</span><span class="stat-label">more energy generated: +215.7 MWh over two months at Penmanshiel (14 turbines)<br><small>TurbineCore policy vs. actual operation</small></span></div>
-      <div class="stat"><span class="stat-value">−1.8%</span><span class="stat-label">lower O&amp;M cost at Penmanshiel; −0.7% at Hill of Towie<br><small>TurbineCore policy vs. actual operation</small></span></div>
-      <div class="stat"><span class="stat-value">−2.8%</span><span class="stat-label">lower 15-day failure risk at Penmanshiel, with availability held<br><small>TurbineCore policy vs. actual operation</small></span></div>
-      <div class="stat"><span class="stat-value">123.8 h</span><span class="stat-label">warning before shutdown, gearbox bearing fault, with no false alarms<br><small>QLSTM-Transformer, ECM:X 2026</small></span></div>
-    </div>
-    <p class="band-note">Policy figures are offline estimates: the learned power-limit policy is replayed through the world model over recorded operation (Penmanshiel, Nov–Dec 2022; Hill of Towie, Jan–Apr 2026) and compared with what the farm actually did. <a href="{{ '/research/turbinecore/#decision-study' | relative_url }}">Details</a></p>
-    <div class="stat-grid stat-secondary">
-      <div class="stat"><span class="stat-value">99.57%</span><span class="stat-label">fault diagnosis accuracy, with variable-level root-cause tracing<br><small>Fault diagnosis</small></span></div>
-      <div class="stat"><span class="stat-value">0.979</span><span class="stat-label">best normal-behaviour R² (pitch system)<br><small>QLSTM-Transformer, ECM:X 2026</small></span></div>
-      <div class="stat"><span class="stat-value">7.67 h</span><span class="stat-label">earlier fault detection than classical LSTM<br><small>QLSTM, ICAC 2025</small></span></div>
-      <div class="stat"><span class="stat-value">0.93</span><span class="stat-label">world model R² across all channels, against 0.83–0.85 for persistence<br><small>TurbineCore</small></span></div>
+  <div class="container">
+    <h2 class="section-title text-center">Key Results</h2>
+    <h5 class="section-subtitle text-center">By project, on real SCADA data from operational wind farms</h5>
+
+    <article class="kr-panel kr-wide">
+      <header class="kr-head">
+        <div class="icon-circle">{% include icon.html name="cube" %}</div>
+        <div>
+          <h6>Project 1 · Autonomous condition monitoring</h6>
+          <h3>TurbineCore</h3>
+        </div>
+        <a class="link-more" href="{{ '/research/turbinecore/' | relative_url }}">Project page {% include icon.html name="arrow" %}</a>
+      </header>
+      <div class="kr-stats four">
+        <div class="kr-stat"><span class="stat-value">+1.5%</span><span class="stat-label">energy generated<br><small>+215.7 MWh in two months, Penmanshiel</small></span></div>
+        <div class="kr-stat"><span class="stat-value">−1.8%</span><span class="stat-label">O&amp;M cost<br><small>Penmanshiel; −0.7% at Hill of Towie</small></span></div>
+        <div class="kr-stat"><span class="stat-value">−2.8%</span><span class="stat-label">15-day failure risk<br><small>with availability held</small></span></div>
+        <div class="kr-stat"><span class="stat-value">0.93</span><span class="stat-label">world model R²<br><small>vs 0.83–0.85 for persistence</small></span></div>
+      </div>
+      <p class="kr-note">Energy, cost and risk: the autonomous power-limit policy replayed through the world model over recorded operation and compared with what the farm actually did (offline estimate). <a href="{{ '/research/turbinecore/#decision-study' | relative_url }}">Decision study</a></p>
+    </article>
+
+    <div class="kr-pair">
+      <article class="kr-panel">
+        <header class="kr-head">
+          <div class="icon-circle">{% include icon.html name="pulse" %}</div>
+          <div>
+            <h6>Project 2 · QLSTM · QLSTM-Transformer</h6>
+            <h3>Anomaly Detection</h3>
+          </div>
+          <a class="link-more" href="{{ '/research/anomaly-detection/' | relative_url }}">Results {% include icon.html name="arrow" %}</a>
+        </header>
+        <div class="kr-stats three">
+          <div class="kr-stat"><span class="stat-value">123.8 h</span><span class="stat-label">warning before shutdown<br><small>gearbox bearing, no false alarms</small></span></div>
+          <div class="kr-stat"><span class="stat-value">0.979</span><span class="stat-label">normal-behaviour R²<br><small>pitch system</small></span></div>
+          <div class="kr-stat"><span class="stat-value">7.67 h</span><span class="stat-label">earlier than LSTM<br><small>QLSTM, ICAC 2025</small></span></div>
+        </div>
+      </article>
+
+      <article class="kr-panel">
+        <header class="kr-head">
+          <div class="icon-circle">{% include icon.html name="search" %}</div>
+          <div>
+            <h6>Project 3 · Physics-constrained graphs</h6>
+            <h3>Fault Diagnosis &amp; Root Cause</h3>
+          </div>
+          <a class="link-more" href="{{ '/research/fault-diagnosis/' | relative_url }}">Results {% include icon.html name="arrow" %}</a>
+        </header>
+        <div class="kr-stats three">
+          <div class="kr-stat"><span class="stat-value">99.57%</span><span class="stat-label">diagnosis accuracy<br><small>vs 99.13% best baseline</small></span></div>
+          <div class="kr-stat"><span class="stat-value">0.977</span><span class="stat-label">F1-score<br><small>precision 0.989</small></span></div>
+          <div class="kr-stat"><span class="stat-value">4</span><span class="stat-label">subsystems traced to root cause<br><small>matching maintenance records</small></span></div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
