@@ -84,9 +84,16 @@ hero_button:
 <section class="section section-dark">
   <div class="container text-center">
     <h2 class="section-title">Key Results</h2>
-    <h5 class="section-subtitle">Validated on real SCADA data from operational wind farms</h5>
-    <div class="stat-grid">
-      <div class="stat"><span class="stat-value">123.8 h</span><span class="stat-label">earliest warning before shutdown, gearbox bearing fault, no false alarms<br><small>QLSTM-Transformer, ECM:X 2026</small></span></div>
+    <h5 class="section-subtitle">What condition-aware operation is worth, estimated on real wind farm records</h5>
+    <div class="stat-grid stat-impact">
+      <div class="stat"><span class="stat-value">+1.5%</span><span class="stat-label">more energy generated: +215.7 MWh over two months at Penmanshiel (14 turbines)<br><small>TurbineCore policy vs. actual operation</small></span></div>
+      <div class="stat"><span class="stat-value">−1.8%</span><span class="stat-label">lower O&amp;M cost at Penmanshiel; −0.7% at Hill of Towie<br><small>TurbineCore policy vs. actual operation</small></span></div>
+      <div class="stat"><span class="stat-value">−2.8%</span><span class="stat-label">lower 15-day failure risk at Penmanshiel, with availability held<br><small>TurbineCore policy vs. actual operation</small></span></div>
+      <div class="stat"><span class="stat-value">123.8 h</span><span class="stat-label">warning before shutdown, gearbox bearing fault, with no false alarms<br><small>QLSTM-Transformer, ECM:X 2026</small></span></div>
+    </div>
+    <p class="band-note">Policy figures are offline estimates: the learned power-limit policy is replayed through the world model over recorded operation (Penmanshiel, Nov–Dec 2022; Hill of Towie, Jan–Apr 2026) and compared with what the farm actually did. <a href="{{ '/research/turbinecore/#decision-study' | relative_url }}">Details</a></p>
+    <div class="stat-grid stat-secondary">
+      <div class="stat"><span class="stat-value">99.57%</span><span class="stat-label">fault diagnosis accuracy, with variable-level root-cause tracing<br><small>Fault diagnosis</small></span></div>
       <div class="stat"><span class="stat-value">0.979</span><span class="stat-label">best normal-behaviour R² (pitch system)<br><small>QLSTM-Transformer, ECM:X 2026</small></span></div>
       <div class="stat"><span class="stat-value">7.67 h</span><span class="stat-label">earlier fault detection than classical LSTM<br><small>QLSTM, ICAC 2025</small></span></div>
       <div class="stat"><span class="stat-value">0.93</span><span class="stat-label">world model R² across all channels, against 0.83–0.85 for persistence<br><small>TurbineCore</small></span></div>

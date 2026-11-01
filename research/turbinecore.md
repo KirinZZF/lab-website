@@ -68,6 +68,28 @@ one"). MASE below 1 means the model beats persistence.
 </div>
 <p class="table-note">MAE and RMSE are on standardised channel values. Numbers are the precomputed results shown in the live demo.</p>
 
+### Decision study {#decision-study}
+
+The learned power-limit policy is replayed through the world model over
+recorded operation and compared with what each farm actually did over the
+same turbine-days. A policy counts as better only if it raises generation,
+lowers failure risk, keeps availability and lowers O&M cost at the same time.
+
+<div class="table-wrap" markdown="0">
+<table class="metrics two-label">
+  <thead><tr><th>Farm</th><th>Operation</th><th>Energy (MWh)</th><th>vs actual</th><th>O&amp;M cost vs actual</th><th>15-day failure risk</th><th>Availability</th><th>Days acting</th></tr></thead>
+  <tbody>
+    <tr><td>Penmanshiel</td><td>Actual operation</td><td>14,319.7</td><td>–</td><td>–</td><td>0.1922</td><td>78.90%</td><td>–</td></tr>
+    <tr class="best"><td>Penmanshiel</td><td>TurbineCore policy</td><td>14,535.4</td><td>+1.51%</td><td>−1.78%</td><td>0.1869</td><td>78.99%</td><td>47</td></tr>
+    <tr><td>Penmanshiel</td><td>Energy &amp; risk only</td><td>14,679.3</td><td>+2.51%</td><td>−0.17%</td><td>0.1890</td><td>78.26%</td><td>75</td></tr>
+    <tr><td>Hill of Towie</td><td>Actual operation</td><td>22,967.1</td><td>–</td><td>–</td><td>0.5260</td><td>59.84%</td><td>–</td></tr>
+    <tr class="best"><td>Hill of Towie</td><td>TurbineCore policy</td><td>23,004.7</td><td>+0.16%</td><td>−0.67%</td><td>0.5227</td><td>59.66%</td><td>47</td></tr>
+    <tr><td>Hill of Towie</td><td>Energy &amp; risk only</td><td>23,043.3</td><td>+0.33%</td><td>−1.41%</td><td>0.5186</td><td>59.26%</td><td>100</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="table-note">Penmanshiel: 14 turbines, 1 Nov – 31 Dec 2022, 854 turbine-days. Hill of Towie: 9 turbines, 1 Jan – 30 Apr 2026, 1,080 turbine-days. "TurbineCore policy" is the four-objective actor-critic; "Energy &amp; risk only" optimises two objectives and gains more energy at the cost of availability. These are offline counterfactual estimates, not field trials.</p>
+
 ### Diagnosis, failure prediction and policy
 
 <div class="card-grid two" markdown="0">
