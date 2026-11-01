@@ -3,7 +3,7 @@
 # Each person:
 #   name:     shown as the card title
 #   role:     one line under the name
-#   photo:    file in assets/img/people/ (square or 4:5, ~600 px wide).
+#   photo:    file in assets/img/people/ (portrait 4:5 fits best; shown in full, not cropped).
 #             Leave empty to show initials instead.
 #   bio:      a short paragraph
 #   url:      "Learn more" link (university profile, Google Scholar, ...)
