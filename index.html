@@ -81,6 +81,19 @@ hero_button:
   </div>
 </section>
 
+<section class="section section-dark">
+  <div class="container text-center">
+    <h2 class="section-title">Key Results</h2>
+    <h5 class="section-subtitle">Validated on real SCADA data from operational wind farms</h5>
+    <div class="stat-grid">
+      <div class="stat"><span class="stat-value">123.8 h</span><span class="stat-label">earliest warning before shutdown, gearbox bearing fault, no false alarms<br><small>QLSTM-Transformer, ECM:X 2026</small></span></div>
+      <div class="stat"><span class="stat-value">0.979</span><span class="stat-label">best normal-behaviour R² (pitch system)<br><small>QLSTM-Transformer, ECM:X 2026</small></span></div>
+      <div class="stat"><span class="stat-value">7.67 h</span><span class="stat-label">earlier fault detection than classical LSTM<br><small>QLSTM, ICAC 2025</small></span></div>
+      <div class="stat"><span class="stat-value">0.93</span><span class="stat-label">world model R² across all channels, against 0.83–0.85 for persistence<br><small>TurbineCore</small></span></div>
+    </div>
+  </div>
+</section>
+
 <section class="section section-tint">
   <div class="container">
     <div class="spotlight">
@@ -100,7 +113,7 @@ hero_button:
           power-limit policy that trades energy against failure risk.
         </p>
         <a class="btn" href="{{ '/research/turbinecore/' | relative_url }}">Explore TurbineCore</a>
-        {% if site.turbinecore_demo_url != "" %}<a class="btn btn-ghost" href="{{ site.turbinecore_demo_url }}" target="_blank" rel="noopener">Live demo</a>{% endif %}
+        {% if site.turbinecore_demo_url != "" %}<a class="btn btn-ghost" href="{{ site.turbinecore_demo_url }}" target="_blank" rel="noopener">Live demo</a>{% if site.turbinecore_demo_note != "" %}<p class="demo-note">{{ site.turbinecore_demo_note }}</p>{% endif %}{% endif %}
       </div>
     </div>
   </div>

@@ -41,7 +41,10 @@ lab:
 # Put the public address of the TurbineCore console here when it may be
 # shown publicly (for example a Cloudflare Pages URL). Empty = the
 # "Live demo" button is hidden.
-turbinecore_demo_url: ""
+turbinecore_demo_url: "https://turbinecore.pages.dev/"
+# Short note shown under the demo button. Clear it once the demo is open
+# to everyone (no password).
+turbinecore_demo_note: "The demo is password-protected while the related paper is under peer review. Contact us for access."
 turbinecore_repo_url: ""   # e.g. https://github.com/KirinZZF/TurbineCore once public
 
 # --- Build settings (normally leave alone) --------------------------

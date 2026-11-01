@@ -14,6 +14,7 @@ it is, and decides how hard it should be allowed to run today.
 {% if site.turbinecore_demo_url != "" %}<a class="btn" href="{{ site.turbinecore_demo_url }}" target="_blank" rel="noopener">Open the live demo</a>{% endif %}
 {% if site.turbinecore_repo_url != "" %}<a class="btn btn-ghost" href="{{ site.turbinecore_repo_url }}" target="_blank" rel="noopener">Code on GitHub</a>{% endif %}
 </div>
+{% if site.turbinecore_demo_url != "" and site.turbinecore_demo_note != "" %}<p class="demo-note">{{ site.turbinecore_demo_note }}</p>{% endif %}
 
 A wind turbine already reports everything it does: power, wind speed,
 temperatures, pressures, vibration, pitch and yaw angles, alarms, and the
@@ -40,6 +41,34 @@ recommending anything.
 </div>
 
 ## Results
+
+### World model
+
+Forecast accuracy of the world model over all channels of the held-out
+blocks, against the persistence baseline ("the next value equals the last
+one"). MASE below 1 means the model beats persistence.
+
+<div class="stat-grid" markdown="0">
+  <div class="stat"><span class="stat-value">0.928</span><span class="stat-label">R² at Penmanshiel<br><small>persistence 0.847</small></span></div>
+  <div class="stat"><span class="stat-value">0.928</span><span class="stat-label">R² at Hill of Towie<br><small>persistence 0.832</small></span></div>
+  <div class="stat"><span class="stat-value">0.71 / 0.72</span><span class="stat-label">MASE, Penmanshiel / Hill of Towie<br><small>persistence = 1</small></span></div>
+  <div class="stat"><span class="stat-value">0.758</span><span class="stat-label">AUROC, failure within 15 days<br><small>63.9% recall at 5% false alarms</small></span></div>
+</div>
+
+<div class="table-wrap" markdown="0">
+<table class="metrics two-label">
+  <thead><tr><th>Farm</th><th>Model</th><th>R²</th><th>MAE</th><th>RMSE</th><th>MASE</th><th>Scored cells</th></tr></thead>
+  <tbody>
+    <tr class="best"><td>Penmanshiel</td><td>World model</td><td>0.9276</td><td>0.152</td><td>0.293</td><td>0.709</td><td>493,621</td></tr>
+    <tr><td>Penmanshiel</td><td>Persistence</td><td>0.8474</td><td>0.214</td><td>0.425</td><td>1.000</td><td>493,621</td></tr>
+    <tr class="best"><td>Hill of Towie</td><td>World model</td><td>0.9283</td><td>0.133</td><td>0.288</td><td>0.724</td><td>2,066,680</td></tr>
+    <tr><td>Hill of Towie</td><td>Persistence</td><td>0.8316</td><td>0.184</td><td>0.442</td><td>1.000</td><td>2,066,680</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="table-note">MAE and RMSE are on standardised channel values. Numbers are the precomputed results shown in the live demo.</p>
+
+### Diagnosis, failure prediction and policy
 
 <div class="card-grid two" markdown="0">
   <figure class="card figure-card">

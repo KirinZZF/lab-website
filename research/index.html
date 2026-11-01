@@ -30,7 +30,51 @@ permalink: /research/
 {% endfor %}
 
 <h2 class="text-center mt-xl">Selected Results</h2>
-<p class="text-center">From <a href="https://doi.org/10.1016/j.ecmx.2026.101918" target="_blank" rel="noopener">Zhang et al., <em>Energy Conversion and Management: X</em>, 2026</a>.</p>
+
+<h3>QLSTM fault detection</h3>
+<p class="table-src"><a href="https://doi.org/10.1109/ICAC65379.2025.11196477" target="_blank" rel="noopener">Zhang &amp; Ma, ICAC 2025</a>. Gearbox bearing temperature, fault-free test set; detection by a T-distribution residual threshold.</p>
+<div class="stat-grid">
+  <div class="stat"><span class="stat-value">0.9446</span><span class="stat-label">QLSTM R²<br><small>LSTM 0.9358</small></span></div>
+  <div class="stat"><span class="stat-value">1.931</span><span class="stat-label">QLSTM RMSE<br><small>LSTM 2.278</small></span></div>
+  <div class="stat"><span class="stat-value">7.67 h</span><span class="stat-label">earlier detection of the gearbox bearing fault than LSTM</span></div>
+</div>
+
+<h3>QLSTM-Transformer with BISW thresholding</h3>
+<p class="table-src"><a href="https://doi.org/10.1016/j.ecmx.2026.101918" target="_blank" rel="noopener">Zhang et al., <em>Energy Conversion and Management: X</em>, 2026</a>. Three real faults: gearbox bearing overheating, generator winding overheating, pitch control.</p>
+
+<div class="table-wrap">
+<table class="metrics">
+  <caption>Normal behaviour modelling accuracy on fault-free test data</caption>
+  <thead>
+    <tr><th rowspan="2">Model</th><th colspan="2">Gearbox</th><th colspan="2">Generator</th><th colspan="2">Pitch</th></tr>
+    <tr><th>R²</th><th>RMSE</th><th>R²</th><th>RMSE</th><th>R²</th><th>RMSE</th></tr>
+  </thead>
+  <tbody>
+    <tr class="best"><td>QLSTM-Transformer</td><td>0.9575</td><td>1.128</td><td>0.9518</td><td>1.076</td><td>0.9791</td><td>0.327</td></tr>
+    <tr><td>LSTM-Transformer</td><td>0.9468</td><td>1.390</td><td>0.9497</td><td>1.127</td><td>0.9675</td><td>0.368</td></tr>
+    <tr><td>LSTM</td><td>0.9377</td><td>1.460</td><td>0.9243</td><td>2.698</td><td>0.9516</td><td>0.420</td></tr>
+    <tr><td>Transformer</td><td>0.9375</td><td>1.629</td><td>0.9041</td><td>3.510</td><td>0.9534</td><td>0.416</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="table-wrap">
+<table class="metrics">
+  <caption>Hours of warning before turbine shutdown (with BISW thresholding)</caption>
+  <thead>
+    <tr><th rowspan="2">Model</th><th colspan="2">Gearbox bearing</th><th colspan="2">Generator winding</th><th colspan="2">Pitch control</th></tr>
+    <tr><th>Hours</th><th>False alarm</th><th>Hours</th><th>False alarm</th><th>Hours</th><th>False alarm</th></tr>
+  </thead>
+  <tbody>
+    <tr class="best"><td>QLSTM-Transformer</td><td>123.83</td><td>No</td><td>77.50</td><td>No</td><td>122.67</td><td>No</td></tr>
+    <tr><td>LSTM-Transformer</td><td>109.67</td><td>No</td><td>75.50</td><td>No</td><td>68.83</td><td>No</td></tr>
+    <tr><td>LSTM</td><td>92.33</td><td>Yes</td><td>32.50</td><td>No</td><td>121.00</td><td>No</td></tr>
+    <tr><td>Transformer</td><td>109.67</td><td>Yes</td><td>76.83</td><td>No</td><td>120.83</td><td>No</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="table-note">The paper also compares KDE and EWMA thresholds and the DIV and TSDT methods; QLSTM-Transformer-BISW is the only configuration with the longest or joint-longest warning and no false alarms on all three faults.</p>
+
 <div class="card-grid two">
   <figure class="card figure-card">
     <img src="{{ '/assets/img/results/qlstm-tr-prediction-wt5.png' | relative_url }}" alt="Measured and QLSTM-Transformer predicted temperature on the test set" loading="lazy">
