@@ -4,11 +4,12 @@
 #  automatically on push (about one minute). See MAINTAINING.md.
 # =====================================================================
 
-title: Intelligent Energy Systems Lab
-tagline: Data-driven condition monitoring for renewable power systems
+title: Intelligent Condition Monitoring for Energy and Power Systems
+tagline: Quantum machine learning and AI for renewable energy
 description: >-
-  Intelligent Energy Systems Lab, School of Engineering, Lancaster University.
-  Research on wind turbine condition monitoring, quantum machine learning,
+  Intelligent Condition Monitoring for Energy and Power Systems,
+  School of Engineering, Lancaster University. Research on quantum machine
+  learning for energy systems, wind turbine condition monitoring,
   world models and AI for renewable energy and power systems.
 
 # --- Where the site lives -------------------------------------------

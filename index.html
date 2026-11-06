@@ -2,10 +2,12 @@
 layout: home
 title: Home
 hero_title: Making renewable power systems watch over themselves
+hero_subtitle: Monitor, Detect and anticipate, and Respond
 hero_text: >-
-  We build data-driven methods that read a wind turbine's own operating
-  record, detect and diagnose faults early, predict failures, and decide how
-  the machine should be run.
+  We develop data-driven machine learning methods that combine wind turbines'
+  operating data with physics-based constraints to detect and diagnose faults
+  early, predict failures, and make informed decisions about how turbines
+  should operate.
 hero_button:
   text: Our research
   url: /research/
@@ -55,6 +57,7 @@ hero_button:
       <em>what would happen</em> if it were operated differently.
     </blockquote>
     <ul class="checklist">
+      <li>Quantum machine learning for energy and power systems</li>
       <li>Early, unsupervised fault detection from routine operating data</li>
       <li>Component-level diagnosis and root-cause tracing grounded in turbine physics</li>
       <li>Calibrated failure probabilities and remaining useful life</li>
@@ -86,30 +89,12 @@ hero_button:
     <h2 class="section-title text-center">Key Results</h2>
     <h5 class="section-subtitle text-center">By project, on real SCADA data from operational wind farms</h5>
 
-    <article class="kr-panel kr-wide">
-      <header class="kr-head">
-        <div class="icon-circle">{% include icon.html name="cube" %}</div>
-        <div>
-          <h6>Project 1 · Autonomous condition monitoring</h6>
-          <h3>TurbineCore</h3>
-        </div>
-        <a class="link-more" href="{{ '/research/turbinecore/' | relative_url }}">Project page {% include icon.html name="arrow" %}</a>
-      </header>
-      <div class="kr-stats four">
-        <div class="kr-stat"><span class="stat-value">+1.5%</span><span class="stat-label">energy generated<br><small>+215.7 MWh in two months, Penmanshiel</small></span></div>
-        <div class="kr-stat"><span class="stat-value">−1.8%</span><span class="stat-label">O&amp;M cost<br><small>Penmanshiel; −0.7% at Hill of Towie</small></span></div>
-        <div class="kr-stat"><span class="stat-value">−2.8%</span><span class="stat-label">15-day failure risk<br><small>with availability held</small></span></div>
-        <div class="kr-stat"><span class="stat-value">0.93</span><span class="stat-label">world model R²<br><small>vs 0.83–0.85 for persistence</small></span></div>
-      </div>
-      <p class="kr-note">Energy, cost and risk: the autonomous power-limit policy replayed through the world model over recorded operation and compared with what the farm actually did (offline estimate). <a href="{{ '/research/turbinecore/#decision-study' | relative_url }}">Decision study</a></p>
-    </article>
-
     <div class="kr-pair">
       <article class="kr-panel">
         <header class="kr-head">
           <div class="icon-circle">{% include icon.html name="pulse" %}</div>
           <div>
-            <h6>Project 2 · QLSTM · QLSTM-Transformer</h6>
+            <h6>Project 1 · Quantum ML · QLSTM-Transformer</h6>
             <h3>Anomaly Detection</h3>
           </div>
           <a class="link-more" href="{{ '/research/anomaly-detection/' | relative_url }}">Results {% include icon.html name="arrow" %}</a>
@@ -125,7 +110,7 @@ hero_button:
         <header class="kr-head">
           <div class="icon-circle">{% include icon.html name="search" %}</div>
           <div>
-            <h6>Project 3 · Physics-constrained graphs</h6>
+            <h6>Project 2 · Quantum-enhanced digital twin</h6>
             <h3>Fault Diagnosis &amp; Root Cause</h3>
           </div>
           <a class="link-more" href="{{ '/research/fault-diagnosis/' | relative_url }}">Results {% include icon.html name="arrow" %}</a>
@@ -137,6 +122,24 @@ hero_button:
         </div>
       </article>
     </div>
+
+    <article class="kr-panel kr-wide">
+      <header class="kr-head">
+        <div class="icon-circle">{% include icon.html name="cube" %}</div>
+        <div>
+          <h6>Project 3 · Autonomous condition monitoring</h6>
+          <h3>TurbineCore</h3>
+        </div>
+        <a class="link-more" href="{{ '/research/turbinecore/' | relative_url }}">Project page {% include icon.html name="arrow" %}</a>
+      </header>
+      <div class="kr-stats four">
+        <div class="kr-stat"><span class="stat-value">+1.5%</span><span class="stat-label">energy generated<br><small>+215.7 MWh in two months, Penmanshiel</small></span></div>
+        <div class="kr-stat"><span class="stat-value">−1.8%</span><span class="stat-label">O&amp;M cost<br><small>Penmanshiel; −0.7% at Hill of Towie</small></span></div>
+        <div class="kr-stat"><span class="stat-value">−2.8%</span><span class="stat-label">15-day failure risk<br><small>with availability held</small></span></div>
+        <div class="kr-stat"><span class="stat-value">0.93</span><span class="stat-label">world model R²<br><small>vs 0.83–0.85 for persistence</small></span></div>
+      </div>
+      <p class="kr-note">Energy, cost and risk: the autonomous power-limit policy replayed through the world model over recorded operation and compared with what the farm actually did (offline estimate). <a href="{{ '/research/turbinecore/#decision-study' | relative_url }}">Decision study</a></p>
+    </article>
   </div>
 </section>
 

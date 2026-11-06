@@ -8,8 +8,25 @@
 #   body:    longer text for the Research page (Markdown allowed)
 #   link:    optional subpage with results (cards and "Results" links go there)
 
-- id: detection
+- id: qml
   label: Theme 1
+  title: Quantum Machine Learning for Energy
+  link: /research/anomaly-detection/
+  icon: atom
+  summary: >-
+    Variational quantum circuits for energy and power systems, capturing
+    high-order interactions among turbine variables with few parameters.
+  body: >-
+    We study how quantum and quantum-inspired models, built on variational
+    quantum circuits, can model the coupled nonlinear dynamics of wind
+    turbines, including how the number of input variables maps to the number
+    of qubits required. Our quantum LSTM and quantum LSTM-Transformer
+    networks are the normal behaviour models behind our anomaly detection
+    results, and a quantum-enhanced digital twin supports our fault
+    diagnosis and root-cause tracing.
+
+- id: detection
+  label: Theme 2
   title: Anomaly Detection
   link: /research/anomaly-detection/
   icon: pulse
@@ -25,7 +42,7 @@
     quantum-inspired LSTM-Transformer networks.
 
 - id: diagnosis
-  label: Theme 2
+  label: Theme 3
   title: Fault Diagnosis & Root Cause
   link: /research/fault-diagnosis/
   icon: search
@@ -40,7 +57,7 @@
     and variable-level root-cause tracing.
 
 - id: prognosis
-  label: Theme 3
+  label: Theme 4
   title: Prognosis & Remaining Useful Life
   link: /research/turbinecore/
   icon: clock
@@ -54,7 +71,7 @@
     maintenance planning.
 
 - id: world-models
-  label: Theme 4
+  label: Theme 5
   title: World Models & Autonomous Operation
   link: /research/turbinecore/
   icon: cube
@@ -70,19 +87,6 @@
     Together they let condition monitoring run autonomously, from raw data
     to an operating decision, with people confirming facts and authorising
     actions.
-
-- id: qml
-  label: Cross-cutting
-  title: Quantum Machine Learning
-  icon: atom
-  summary: >-
-    Variational quantum circuits that capture high-order interactions among
-    variables with few parameters.
-  body: >-
-    We study how quantum and quantum-inspired models, built on variational
-    quantum circuits, can model the coupled nonlinear dynamics of wind
-    turbines, including how the number of input variables maps to the number
-    of qubits required.
 
 - id: power-systems
   label: Cross-cutting

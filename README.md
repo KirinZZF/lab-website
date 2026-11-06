@@ -1,7 +1,7 @@
-# Intelligent Energy Systems Lab website
+# Intelligent Condition Monitoring for Energy and Power Systems website
 
-Website of the Intelligent Energy Systems Lab (Dr Xiandong Ma), School of
-Engineering, Lancaster University.
+Website of the Intelligent Condition Monitoring for Energy and Power Systems group
+(Dr Xiandong Ma), School of Engineering, Lancaster University.
 
 **Live site:** https://kirinzzf.github.io/lab-website/
 
